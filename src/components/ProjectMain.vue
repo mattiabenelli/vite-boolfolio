@@ -41,16 +41,16 @@ export default {
                 <div v-if="loading" class="d-flex justify-content-center">
                     <div class="loader"></div>
                 </div>
-                <div v-else class="">
+                <div v-else class="col-12 d-flex justify-content-center">
                     <div class="card my-3" v-for="project in projects" :key="project.id">
                         <div class="card-body">
                             <div class="card-img-top">
-                                <img class="img-fluid" :src="project.cover_image != null ? `${baseUrl}${project.cover_image}` : 'https://picsum.photos/200/300'" alt="">
+                                <img class="img-fluid" :src="project.cover_image != null ? `${baseUrl}/storage/${project.cover_image}` : 'https://picsum.photos/200/300'" alt="">
                             </div>
                             <div class="card-title">
                                 <h5>{{ project.title }}</h5>
                             </div>
-                            <a href="#" class="btn-success">
+                            <a href="#" class="btn btn-success">
                                 Leggi l'articolo
                             </a>
                         </div>

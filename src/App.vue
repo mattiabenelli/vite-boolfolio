@@ -12,5 +12,6 @@ export default {
   <ProjectMain />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@use "./styles/app.scss" as *;
 </style>
