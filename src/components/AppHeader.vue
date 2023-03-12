@@ -8,6 +8,10 @@ export default {
           label: "Homepage",
           routeName: "homepage",
         },
+        {
+          label: "Blog",
+          routeName: "project_list",
+        },
       ],
     };
   },
