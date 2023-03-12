@@ -57,6 +57,14 @@ export default {
                           </div>
                           <div class="card-title py-1">
                               <h5>{{ project.title }}</h5>
+                              <em><strong>type:</strong> {{ project.type ? project.type.name : 'non disponibile'  }}</em> <br>
+                              <em><strong>tecnologie:</strong></em>
+                              <em v-if="project.technologies == false">
+                                <em>non disponibile<br></em>
+                              </em>
+                              <em v-else>
+                                <em v-for="tech in project.technologies" :key="project.technologies.id"><br>{{ tech.name }}</em>
+                              </em>
                           </div>
                           <div class="card-text py-1">
                             {{ project.content }}
