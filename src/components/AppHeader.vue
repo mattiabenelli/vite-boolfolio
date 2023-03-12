@@ -23,7 +23,10 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarSupportContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item" v-for="(item, index) in menuItems" ::key="index">
-                            <a :href="item.routeName" class="text-white">{{ item.label }}</a>
+                            <!-- <a :href="item.routeName" class="text-white">{{ item.label }}</a> -->
+                            <router-link :to="{ name:item.routeName }" class="nav-link text-white">
+                                {{item.label}}
+                            </router-link>
                         </li>
                     </ul>
                 </div>
