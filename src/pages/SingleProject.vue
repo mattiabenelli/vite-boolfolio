@@ -31,9 +31,26 @@ export default {
                         <div class="loader"></div>
                     </div>
                     <div v-else class="col-12">
-                        <h2>{{ project.title }}</h2>
-                        <div class="cover_img">
-                            <img class="img-fluid" :src="this.project.cover_image != null ? `${this.store.baseUrl}/storage/${this.project.cover_image}` : 'https://picsum.photos/300/200'">
+                        <div class="card mt-5">
+                            <div class="card-img-top">
+                                <div class="cover_img">
+                                    <img class="img-fluid" :src="this.project.cover_image != null ? `${this.store.baseUrl}/storage/${this.project.cover_image}` : 'https://picsum.photos/300/200'">
+                                </div>
+                            </div>
+                            <div class="card-title">
+                                <h2>{{ project.title }}</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-3">{{ project.content }}</p>
+                                <em><strong>type:</strong> {{ project.type ? project.type.name : 'non disponibile'  }}</em> <br>
+                                <em><strong>tecnologie:</strong></em>
+                                <em v-if="project.technologies == false">
+                                <em>non disponibile<br></em>
+                                </em>
+                                <em v-else>
+                                    <em v-for="tech in project.technologies" :key="project.technologies.id"><br>{{ tech.name }}</em>
+                                </em>
+                            </div>
                         </div> 
                     </div>
                 </div>
