@@ -1,14 +1,15 @@
 <script>
 import axios from "axios";
+import { store } from "../store";
+
 import ProjectCard from "../components/ProjectCard.vue";
 
 export default {
   name: "ProjectList",
   data() {
     return {
+      store,
       projects: [],
-      loading: true,
-      baseUrl: "http://127.0.0.1:8000",
       currentPage: 1,
       lastPage: null,
     };
@@ -19,15 +20,17 @@ export default {
 
   methods: {
     getProject(project_page) {
-      this.loading = true;
+      this.store.loading = true;
       axios
-        .get(`${this.baseUrl}/api/projects`, { params: { page: project_page } })
+        .get(`${this.store.baseUrl}/api/projects`, {
+          params: { page: project_page },
+        })
         .then((response) => {
           if (response.data.success) {
             this.projects = response.data.results.data;
             this.currentPage = response.data.results.current_page;
             this.lastPage = response.data.results.last_page;
-            this.loading = false;
+            this.store.loading = false;
           } else {
             //failed message
           }
@@ -48,13 +51,13 @@ export default {
                 <h2 class="text-center">Boolpress</h2>
             </div>
             <div class="col-12">
-              <div v-if="loading" class="d-flex justify-content-center">
+              <div v-if="store.loading" class="d-flex justify-content-center">
                   <div class="loader"></div>
               </div>
               <div v-else class="col-12 d-flex justify-content-center flex-wrap">
                 <div class="row">
                   <div class="col-12 col-md-4" v-for="project in projects" :key="project.id">
-                    <ProjectCard :project="project" :baseUrl="baseUrl"/>
+                    <ProjectCard :project="project" :baseUrl="store.baseUrl"/>
                   </div>
                 </div>
               </div>
