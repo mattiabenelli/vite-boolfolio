@@ -12,6 +12,10 @@ export default {
           label: "Blog",
           routeName: "project_list",
         },
+        {
+          label: "contatti",
+          routeName: "contact",
+        },
       ],
     };
   },
