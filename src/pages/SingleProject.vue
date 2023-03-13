@@ -8,15 +8,16 @@ export default {
     return {
       store,
       project: null,
+      loading: true,
     };
   },
   mounted() {
-    this.store.loading = true;
+    // this.store.loading = true;
     axios
       .get(`${this.store.baseUrl}/api/projects/${this.$route.params.slug}`)
       .then((response) => {
         this.project = response.data.results;
-        this.store.loading = false;
+        this.loading = false;
       });
   },
 };
@@ -26,7 +27,7 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="col-12 d-flex justify-content-center" v-if="store.loading">
+                    <div class="col-12 d-flex justify-content-center" v-if="loading">
                         <div class="loader"></div>
                     </div>
                     <div v-else class="col-12">
