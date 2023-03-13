@@ -31,6 +31,9 @@ export default {
                         <div class="loader"></div>
                     </div>
                     <div v-else class="col-12">
+                        <div class="d-flex justify-content-end my-5">
+                            <router-link class="btn btn-success" :to="{ name: 'project_list' }">Torna alla lista dei progetti</router-link>
+                        </div>
                         <div class="card mt-5">
                             <div class="card-img-top">
                                 <div class="cover_img">
